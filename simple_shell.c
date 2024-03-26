@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
 
 #define BUFFER_SIZE 1024
 
@@ -13,12 +14,12 @@ int main(void)
 	{
 		printf("#cisfun$ ");
 		if (!fgets(buffer, BUFFER_SIZE, stdin))
-		printf("\n");
+			printf("\n");
 		break;
 	}
 	buffer[strcspn(buffer, "\n")] = '\0';
 
-	if (fork() == 0)
+	if (fork() == 0){
 		execlp(buffer, buffer, NULL);
 		perror(buffer);
 		exit(EXIT_FAILURE);
@@ -27,6 +28,6 @@ int main(void)
 	{
 		wait(NULL);
 	}
-}
+
 return (EXIT_SUCCESS);
 }
