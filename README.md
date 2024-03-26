@@ -128,4 +128,5 @@ $
 + https://en.wikipedia.org/wiki/Unix_shell
 + https://en.wikipedia.org/wiki/Thompson_shell
 + https://en.wikipedia.org/wiki/Ken_Thompson
-+ https://intranet.atlasschool.com/concepts/900 
++ https://intranet.atlasschool.com/concepts/900
++ https://www.cs.cornell.edu/courses/cs414/2004su/homework/shell/shell.html 
