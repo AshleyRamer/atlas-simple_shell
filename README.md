@@ -14,6 +14,22 @@ Here are some key features and functionalities of a simple shell:
 
 Implementing a simple shell involves parsing user input, interpreting commands, and executing them using system calls provided by the operating system. It's a fundamental component of Unix-like operating systems and is often used by developers and system administrators for tasks ranging from basic file manipulation to complex automation scripts.
 
+Example code:
+```
+ls -la
+```
+
+Output:
+```
+$pwd
+/simple_shell
+$ echo "Welcome to Simple Shell!"
+"Welcome to Simple Shell!"
+$ echo "You can use normal commands."
+"You can use normal commands."
+$
+```
+
 ## Project Requirements
 + Allowed editors: vi, vim, emacs
 + All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
