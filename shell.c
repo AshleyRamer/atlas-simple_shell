@@ -10,19 +10,19 @@ int main(void) {
     char buffer[BUFFER_SIZE];
 
     while (1) {
-        printf("#cisfun$ "); // Display prompt
+        printf("#cisfun$ ");
         if (!fgets(buffer, BUFFER_SIZE, stdin)) {
-            printf("\n"); // Handle EOF (Ctrl+D)
+            printf("\n");
             break;
         }
-        buffer[strcspn(buffer, "\n")] = '\0'; // Remove trailing newline
+        buffer[strcspn(buffer, "\n")] = '\0';
 
-        if (fork() == 0) { // Child process
-            execlp(buffer, buffer, NULL); // Execute command
-            perror(buffer); // Print error if execution fails
+        if (fork() == 0) {
+            execlp(buffer, buffer, NULL);
+            perror(buffer);
             exit(EXIT_FAILURE);
-        } else { // Parent process
-            wait(NULL); // Wait for child process to finish
+        } else {
+            wait(NULL);
         }
     }
 
