@@ -28,8 +28,7 @@ int main(void)
 	{
 		wait(NULL);
 	}
-	printf("\n");
-}
 
-return (EXIT_SUCCESS);
+	printf("\n");
+	return EXIT_SUCCESS;
 }
