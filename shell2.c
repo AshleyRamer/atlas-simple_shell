@@ -27,7 +27,7 @@ int main(void)
 		token = strtok(NULL, " ");
 	}
 	args[i] = NULL;
-	pid_t pid = fork();
+	pid = fork();
 	if (pid == -1)
 	{
 		perror("fork");
@@ -35,8 +35,7 @@ int main(void)
 	}
 	else
 	{
-		int status;
 		waitpid(pid, &status, 0);
 	}
-	return (0);
+	return 0;
 }
