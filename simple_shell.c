@@ -3,6 +3,12 @@
 #include <unistd.h>
 #include <string.h>
 
+/**
+ * main - entry for the simple shell program
+ *
+ * Return: Always 0.
+ */
+
 #define BUFSIZE 1024
 
 int main(void)
