@@ -23,7 +23,7 @@ int main(void)
 
 		cmd[strcspn(cmd, "\n")] = '\0';
 
-		char *token = strtok(cmd, " ");
+		token = strtok(cmd, " ");
         	int arg_count = 0;
 
         	while (token != NULL && arg_count < MAX_ARGS)
