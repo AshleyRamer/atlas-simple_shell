@@ -7,11 +7,17 @@ int main(void)
 {
 	char cmd[BUFSIZE];
 	char *args[BUFSIZE / 2];
+	int i;
+	pid_t pid;
+	int status;
+
 	while (1)
-	{
-		printf("\n");
-		break;
-	}
+		printf("cisfun$ ");
+		if (!fgets(cmd, BUFSIZE, stdin))
+		{
+			printf("\n");
+			break;
+		}
 	cmd[strcspn(cmd, "\n")] = '\0';
 	int i = 0;
 	char *token = strtok(cmd, " ");
