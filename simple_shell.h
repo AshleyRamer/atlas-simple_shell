@@ -31,19 +31,9 @@ int main(void)
 		args[0] = cmd;
 		args[1] = NULL;
 
-		if (strcmp(cmd, "/bin/ls") == 0)
+		if (execve(cmd, args, NULL) == -1)
 		{
-			printf("barbie_j       env-main.c  exec.c  fork.c  pid.c  ppid.c\n");
-			printf("prompt   prompt.c  shell.c  stat.c         wait\n");
-			printf("env-environ.c  exec    fork    mypid   ppid   printenv\n");
-			printf("promptc  shell     stat test_scripting.sh  wait.c\n");
-		}
-		else
-		{
-			if (execve(cmd, args, NULL) == -1)
-			{
-				printf("%s: command not found\n", cmd);
-			}
+			printf("%s: command not found\n", cmd);
 		}
 	}
 
