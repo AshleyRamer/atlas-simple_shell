@@ -26,7 +26,9 @@ int main(void)
 	cmd[strcspn(cmd, "\n")] = '\0';
 	int i = 0;
 	char *token = strtok(cmd, " ");
+
 	while (token != NULL && i < BUFSIZE / 2 - 1)
+
 	{
 		args[i++] = token;
 		token = strtok(NULL, " ");
@@ -42,5 +44,5 @@ int main(void)
 	{
 		waitpid(pid, &status, 0);
 	}
-	return 0;
+	return (0);
 }
