@@ -25,15 +25,15 @@ int main(void)
 		cmd[strcspn(cmd, "\n")] = '\0';
 
 		token = strtok(cmd, " ");
-        	arg_count = 0;
+		arg_count = 0;
 
-        	while (token != NULL && arg_count < MAX_ARGS)
-        	{
-            		args[arg_count++] = token;
-            		token = strtok(NULL, " ");
-        	}
+		while (token != NULL && arg_count < MAX_ARGS)
+		{
+			args[arg_count++] = token;
+			token = strtok(NULL, " ");
+		}
 
-        	args[arg_count] = NULL;
+		args[arg_count] = NULL;
 
 
 		pid = fork();
