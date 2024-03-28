@@ -9,7 +9,6 @@
 #define BUFSIZE 1024
 
 int main(void)
-{
 	char cmd[BUFSIZE];
 	char *args[BUFSIZE / 2];
 	int i;
@@ -17,14 +16,16 @@ int main(void)
 	int status;
 
 	while (1)
+	{
 		printf("cisfun$ ");
 		if (!fgets(cmd, BUFSIZE, stdin))
 		{
 			printf("\n");
 			break;
 		}
+	}
 	cmd[strcspn(cmd, "\n")] = '\0';
-	int i = 0;
+	i = 0;
 	char *token = strtok(cmd, " ");
 
 	while (token != NULL && i < BUFSIZE / 2 - 1)
