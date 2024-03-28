@@ -13,6 +13,7 @@ int main(void)
 	char *args[MAX_ARGS + 1];
 	pid_t pid;
 	char *token;
+	int arg_count;
 
 	while (1)
 	{
@@ -24,7 +25,7 @@ int main(void)
 		cmd[strcspn(cmd, "\n")] = '\0';
 
 		token = strtok(cmd, " ");
-        	int arg_count = 0;
+        	arg_count = 0;
 
         	while (token != NULL && arg_count < MAX_ARGS)
         	{
