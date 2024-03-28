@@ -5,11 +5,12 @@
 #include <sys/wait.h>
 
 #define BUFSIZE 1024
+#define MAX_ARGS 64
 
 int main(void)
 {
 	char cmd[BUFSIZE];
-	char *args[2];
+	char *args[MAX_ARGS + 1];
 	pid_t pid;
 
 	while (1)
@@ -21,8 +22,17 @@ int main(void)
 
 		cmd[strcspn(cmd, "\n")] = '\0';
 
-		args[0] = cmd;
-		args[1] = NULL;
+		char *token = strtok(cmd, " ");
+        	int arg_count = 0;
+
+        	while (token != NULL && arg_count < MAX_ARGS)
+        	{
+            		args[arg_count++] = token;
+            		token = strtok(NULL, " ");
+        	}
+
+        	args[arg_count] = NULL;
+
 
 		pid = fork();
 
