@@ -12,6 +12,7 @@ int main(void)
 	char cmd[BUFSIZE];
 	char *args[MAX_ARGS + 1];
 	pid_t pid;
+	char *token;
 
 	while (1)
 	{
