@@ -1,52 +1,51 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <string.h>
-#include "main.h"
 
-/**
- * main - entry for the simple shell program
- *
- * Return: Always 0.
- */
-
-#define BUFSIZE 1024
+#define BUFFER_SIZE 1024
 
 int main(void)
 {
-	char cmd[BUFSIZE];
+	char buffer[BUFFER_SIZE];
 	char *args[2];
+	pid_t child_pid;
+	int status;
 
 	while (1)
 	{
-		printf("#cisfun$");
+		printf("$ ");
+		fflush(stdout);
 
-		if (!fgets(cmd, BUFSIZE, stdin))
+		if (fgets(buffer, BUFFER_SIZE, stdin) == NULL)
 		{
 			printf("\n");
 			break;
 		}
 
-		cmd[strcspn(cmd, "\n")] = '\0';
+		buffer[strcspn(buffer, "\n")] = '\0';
 
-		args[0] = cmd;
+		args[0] = buffer;
 		args[1] = NULL;
 
-		if (strcmp(cmd, "/bin/ls") == 0)
+		child_pid = fork();
+		if (child_pid == -1)
 		{
-			printf("barbie_j       env-main.c  exec.c  fork.c  pid.c  ppid.c\n");
-			printf("prompt   prompt.c  shell.c  stat.c         wait\n");
-			printf("env-environ.c  exec    fork    mypid   ppid   printenv\n");
-			printf("promptc  shell     stat test_scripting.sh  wait.c\n");
+			perror("fork");
+			exit(EXIT_FAILURE);
+		}
+		if (child_pid == 0)
+		{
+			execve(args[0], args, NULL);
+			perror(args[0]);
+			exit(EXIT_FAILURE);
 		}
 		else
 		{
-			if (execve(cmd, args, NULL) == -1)
-			{
-				printf("%s: command not found\n", cmd);
-			}
+			waitpid(child_pid, &status, 0);
 		}
 	}
-
-	return (0);
+	return (EXIT_SUCCESS);
 }
