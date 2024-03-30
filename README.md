@@ -1,4 +1,3 @@
-deedlydoo
 # ATLAS-SIMPLE_SHELL PROJECT
 This README file is for the "Simple Shell" project. Creators are Ashley Ramer and Tamara Walling. This project is due on Tuesday, April 2, 2024 at Atlas School in Tulsa, Oklahoma.
 
