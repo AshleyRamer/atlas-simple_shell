@@ -5,9 +5,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
 
 #define BUFSIZE 1024
+#define MAX_ARGS 32
 
-void execute_command(const char *cmd);
+void tokenize_input(char *buffer, char *args[]);
 
 #endif
