@@ -8,6 +8,13 @@
 #define BUFFER_SIZE 1024
 #define MAX_ARGS 32
 
+/**
+ * tokenize_input -  tokenizes input into separate arguments
+ *
+ * @buffer: input string to be tokenized
+ * @args: array of strings where tokens will be stored
+ */
+
 void tokenize_input(char *buffer, char *args[])
 {
 	char *token = strtok(buffer, " ");
@@ -20,6 +27,12 @@ void tokenize_input(char *buffer, char *args[])
 	}
 	args[i] = NULL;
 }
+
+/**
+ * main - function for the simple shell program
+ *
+ * Return: EXIT_SUCESS
+ */
 
 int main(void)
 {
