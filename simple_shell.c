@@ -6,11 +6,25 @@
 #include <string.h>
 
 #define BUFFER_SIZE 1024
+#define MAX_ARGS 32
+
+void tokenize_input(char *buffer, char *args[])
+{
+	char *token = strtok(buffer, " ");
+	int i = 0;
+
+	while (token != NULL && i < MAX_ARGS - 1)
+	{
+		args[i++] = token;
+		token = strtok(NULL, " ");
+	}
+	args[i] = NULL;
+}
 
 int main(void)
 {
 	char buffer[BUFFER_SIZE];
-	char *args[2];
+	char *args[MAX_ARGS];
 	pid_t child_pid;
 	int status;
 
@@ -27,8 +41,7 @@ int main(void)
 
 		buffer[strcspn(buffer, "\n")] = '\0';
 
-		args[0] = buffer;
-		args[1] = NULL;
+		tokenize_input(buffer, args);
 
 		child_pid = fork();
 		if (child_pid == -1)
