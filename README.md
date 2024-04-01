@@ -1,6 +1,54 @@
 # ATLAS-SIMPLE_SHELL PROJECT
 This README file is for the "Simple Shell" project. Creators are Ashley Ramer and Tamara Walling. This project is due on Tuesday, April 2, 2024 at Atlas School in Tulsa, Oklahoma.
 
+## Flow Chart
+```
+
+ ---------------            -----------------
+|     Start     |--------->|  Input Command? |
+ ---------------            -----------------
+        |
+        |
+        v
+ --------------
+| Read Command |
+ --------------
+        |
+        |
+        v
+ -------------------          ----------
+| Command = "exit"? |------->|   Exit   |
+ -------------------          ----------
+        |
+        |
+        v
+ -----------------
+| Command = "cd"? |-------> -----------------------
+ -----------------         |    Change Directory   |
+        |                   -----------------------
+        |                            |
+        |                            |
+        |                            v
+        |                   ---------------------
+        +------------------| Execute External    |
+                           |      Program        |
+                            ---------------------
+                                    |
+                                    |
+                                    v
+                           ---------------------
+                          |   Execute Command   |
+                           ---------------------
+                                    |
+                                    |
+                                    v
+                              --------------
+                             |     End      |
+                              --------------
+
+
+```
+
 ## Description
 A simple shell, also known as a command-line interpreter or CLI (Command Line Interface), is a program that provides a text-based interface for users to interact with the operating system by entering commands. It reads commands from the user, interprets them, and then executes the corresponding programs or actions.
 
