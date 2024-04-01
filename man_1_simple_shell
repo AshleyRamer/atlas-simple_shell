@@ -8,8 +8,9 @@ man_1_simple_shell \- student created simple shell with limited functionality.
 .B #include <stdio.h>
 .B #include <stdlib.h>
 .B #include <string.h>
-.B 
-.B
+.B #include <unistd.h> 
+.B #include <sys/wait.h>
+.B #include <sys/types.h>
 
 .SH Synopsis
 A simple shell provides a command-line interface for users to interact with the operating system by executing commands and managing basic operations like input/output redirection.
