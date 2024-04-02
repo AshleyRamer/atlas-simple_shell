@@ -5,12 +5,17 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <string.h>
+#include <errno.h>
+#include <signal.h>
 
 #define BUFFER_SIZE 1024
 #define MAX_ARGS 32
 
+void tokenize_input(char *buffer, char *args[]);
+int execute_command(char *args[], int num_args);
+
 /**
- * tokenize_input -  tokenizes input into separate arguments
+ * tokenize_input -  Tokenizes input into separate arguments
  *
  * @buffer: input string to be tokenized
  * @args: array of strings where tokens will be stored
@@ -29,8 +34,9 @@ void tokenize_input(char *buffer, char *args[])
 	args[i] = NULL;
 }
 
+
 /**
- * execute_command - executes built-in commands or external programs
+ * execute_command - Executes built-in commands or external programs entered by the user
  *
  * @args: array of command arguments
  * @num_args: number of arguments
@@ -62,18 +68,50 @@ int execute_command(char *args[], int num_args)
 	return (1);
 }
 
+
 /**
- * main - function for the simple shell program
+ * sigint_handler - Handles the SIGINT signal (Ctrl+C)
+ *
+ * @signum: Signal Number
+ */
+
+void sigint_handler(int signum)
+{
+	printf("\nCaught SIGINT (Crtl+C)\n");
+}
+
+
+/**
+ * sigtstp_handler - Handles the SIGTSTP signal (Ctrl+Z)
+ *
+ * @signum: Signal Number
+ */
+
+void sigtstp_handler(int signum)
+{
+	printf("\nCaught SIGSTP (Ctrl+Z)\n");
+}
+
+
+/**
+ * main - Entry point for Simple Shell program
+ *
+ * @argc: Number of command line arguments
+ * @argv: Array of command line arguments
+ * @env: Array of environment variables
  *
  * Return: EXIT_SUCESS
  */
 
-int main(void)
+int main(int argc, char **argv, char **env)
 {
 	char buffer[BUFFER_SIZE];
 	char *args[MAX_ARGS];
 	pid_t child_pid;
 	int status;
+
+	signal(SIGINT, sigint_handler);
+	signal(SIGTSTP, sigtstp_handler);
 
 	while (1)
 	{
@@ -98,8 +136,8 @@ int main(void)
 		}
 		if (child_pid == 0)
 		{
-			execve(args[0], args, NULL);
-			perror(args[0]);
+			execve(args[0], args, env);
+			fprintf(stderr, "Failed to execute %s: %s\n", args[0], strerror(errno));
 			exit(EXIT_FAILURE);
 		}
 		else

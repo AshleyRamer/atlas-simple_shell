@@ -13,5 +13,8 @@
 
 void tokenize_input(char *buffer, char *args[]);
 int execute_command(char *args[], int num_args);
+int main(int argc, char **argv, char **env);
+void sigint_handler(int signum);
+void sigtstp_handler(int signum);
 
 #endif
