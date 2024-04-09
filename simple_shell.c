@@ -77,6 +77,7 @@ int execute_command(char *args[], int num_args)
 
 void sigint_handler(int signum)
 {
+	(void)signum;
 	printf("\nCaught SIGINT (Crtl+C)\n");
 }
 
@@ -89,6 +90,7 @@ void sigint_handler(int signum)
 
 void sigtstp_handler(int signum)
 {
+	(void)signum;
 	printf("\nCaught SIGSTP (Ctrl+Z)\n");
 }
 
@@ -105,6 +107,8 @@ void sigtstp_handler(int signum)
 
 int main(int argc, char **argv, char **env)
 {
+	(void)argc;
+	(void)argv;
 	char buffer[BUFFER_SIZE];
 	char *args[MAX_ARGS];
 	pid_t child_pid;
