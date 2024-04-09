@@ -107,12 +107,13 @@ void sigtstp_handler(int signum)
 
 int main(int argc, char **argv, char **env)
 {
-	(void)argc;
-	(void)argv;
 	char buffer[BUFFER_SIZE];
 	char *args[MAX_ARGS];
 	pid_t child_pid;
 	int status;
+
+	(void)argc;
+	(void)argv;
 
 	signal(SIGINT, sigint_handler);
 	signal(SIGTSTP, sigtstp_handler);
